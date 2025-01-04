@@ -1,7 +1,6 @@
 import os
 import tempfile
 
-from django.conf import settings
 from django.contrib import admin
 from django.shortcuts import render
 from django.urls import path
@@ -31,9 +30,15 @@ class AyahAdmin(admin.ModelAdmin):
     resource_class = Ayah
     list_display = [
         "id",
+        "group",
         "title",
+        "position",
     ]
     ordering = ["id"]
+    list_editable = [
+        "position",
+    ]
+    list_filter = ['group', ]
 
 
 @admin.register(LocalDatabase)
