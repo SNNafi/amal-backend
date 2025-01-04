@@ -30,6 +30,10 @@ DEBUG = env.bool("DJANGO_DEBUG", False)
 
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["localhost", "0.0.0.0", "127.0.0.1", "192.168.0.102"])
 
+CSRF_TRUSTED_ORIGINS = env.list("DJANGO_CSRF_TRUSTED_ORIGINS",
+                                default=["http://localhost", "http://0.0.0.0", "http://127.0.0.1",
+                                         "http://192.168.0.102"])
+
 ADMIN_URL = env("DJANGO_ADMIN_URL")
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-root

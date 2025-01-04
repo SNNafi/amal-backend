@@ -13,6 +13,10 @@ COPY . .
 
 RUN useradd -m myuser
 RUN chown -R myuser:myuser /app
+# Add permissions for volume directories
+RUN mkdir -p /app/db /app/media && \
+    chown -R myuser:myuser /app/db /app/media && \
+    chmod -R 755 /app/db /app/media
 USER myuser
 
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
